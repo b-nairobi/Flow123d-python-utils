@@ -1,64 +1,34 @@
-# Flow123d-python-utils
+# Cobertura Report Merger
 
-Takes file in json profiler format created in project [Flow123d](https://github.com/flow123d/flow123d) and
-converts it to different format.
+Takes file in cobertura format merges them to one combined report.
 
 ## Usage
 ```
-Usage: profiler_formatter_script.py [options]
+Usage: coverage_merge_script.py [options] [file1 file2 ... filen]
 
 Options:
+  --version             show program's version number and exit
   -h, --help            show this help message and exit
-  -i FILENAME, --input=FILENAME
-                        Absolute or relative path to JSON file which will be
-                        processed
-  -o FILENAME, --output=FILENAME
-                        Absolute or relative path output file which will be
-                        generated/overwritten
-  -f CLASSNAME, --formatter=CLASSNAME
-                        Classname of formatter which will be used, to list
-                        available formatters use option -l (--list)
-  -l, --list            Prints all formatters available in folder formatters
-                        (using duck-typing)
-  -s STYLES, --style=STYLES
-                        Additional styling options in name:value format (for
-                        example separator:  default is os separator)
-```
-## Examples
-List all avaiable formatters:
+  -o FILE, --output=FILE
+                        output file xml name
+  -p FILE, --path=FILE  xml location, default current directory
+  -l LOGLEVEL, --log=LOGLEVEL
+                        Log level DEBUG, INFO, WARNING, ERROR, CRITICAL
+  -f, --filteronly      If set all files will be filtered by keep rules
+                        otherwise all given files will be merged and filtered.
+  -s SUFFIX, --suffix=SUFFIX
+                        Additional suffix which will be added to filtered
+                        files so they original files can be preserved
+  -k NAME, --keep=NAME  preserves only specific packages. e.g.:
+                        'python merge.py -k src.la.*'
+                        will keep all packgages in folder src/la/ and all
+                        subfolders of this folders.
+                        There can be mutiple rules e.g.:
+                        'python merge.py -k src.la.* -k unit_tests.la.'
+                        Format of the rule is simple dot (.) separated names
+                        with wildcard (*) allowed, e.g:
+                        package.subpackage.*
 
-```bash
-> python profiler_formatter_script.py -l
-```
-```
-Formatter available: 
-	CSVFormatter
-	SimpleTableFormatter
-```
-
-Transform json file ```foo.json``` to csv format file ```bar.csv```:
-
-```bash
-> python profiler_formatter_script.py -i 'foo.json' -f 'CSVFormatter' -o 'bar.csv'
-```
-```bar.csv file generated```
-
-Print json file ```foo.json``` in simple table format with extra paddings around cells:
-
-```bash
-> python profiler_formatter_script.py -i 'foo.json' -f 'SimpleTableFormatter' -s 'padding:5'
-```
-
-## Module support
-
-by importing ```profiler_formatter_module``` you can use formatter in python code
-```bash
-> python
-
->>> import profiler_formatter_module
->>> profiler_formatter_module.ProfilerFormatter.list_formatters ()
-['CSVFormatter', 'SimpleTableFormatter']
->>> profiler_formatter_module.ProfilerFormatter().convert ('foo.json', 'bar.txt')
-bar.txt file generated
-True
+If no files are specified all xml files in current directory will be selected.
+Useful when there is not known precise file name only location
 ```
