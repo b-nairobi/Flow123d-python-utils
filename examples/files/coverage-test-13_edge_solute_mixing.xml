@@ -1,6 +1,12 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage
   SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-03.dtd'>
+<!--
+ This work is a derivative of "Flow123d-python-utils"
+ (https://github.com/x3mSpeedy/Flow123d-python-utils) by Jan Hybš, used
+ under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+ This work is licensed under CC BY 4.0 by b.nairobi.dev+gh@gmail.com.
+-->
 <coverage branch-rate="0.168159274985" line-rate="0.30751487752"
  timestamp="1429613000" version="gcovr 3.2">
  <sources>

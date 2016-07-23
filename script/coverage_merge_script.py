@@ -3,6 +3,15 @@
 # author:   Jan Hybs
 
 """
+" This work is a derivative of "Flow123d-python-utils"
+" (https://github.com/x3mSpeedy/Flow123d-python-utils) by Jan Hybš, used
+" under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+" This work is licensed under CC BY 4.0 by b.nairobi.dev+gh@gmail.com.
+"""
+
+from __future__ import absolute_import
+
+"""
 This script is simple iface to coverage_merge_module module.
 Script is expected to run as main python file. Script takes arguments from console and calls methods of module.
 
@@ -34,8 +43,6 @@ Options:
 If no files are specified all xml files in current directory will be selected.
 Useful when there is not known precise file name only location
 """
-
-from __future__ import absolute_import
 
 import pathfix
 pathfix.append_to_path()
