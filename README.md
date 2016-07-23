@@ -1,6 +1,6 @@
 # Cobertura Report Merger
 
-Merges files in cobertura format into one combined report.
+Merges files in [cobertura](https://github.com/cobertura/cobertura) format into one combined report.
 
 ## Usage
 ```
