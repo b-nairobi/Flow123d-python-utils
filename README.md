@@ -1,6 +1,6 @@
 # Cobertura Report Merger
 
-Merges files in [cobertura](https://github.com/cobertura/cobertura) format into one combined report.
+Merges files in [coberturas](https://github.com/cobertura/cobertura) XML format into one combined XML report.
 
 ## Usage
 ```
