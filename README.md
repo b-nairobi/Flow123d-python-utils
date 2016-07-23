@@ -1,6 +1,6 @@
 # Cobertura Report Merger
 
-Takes file in cobertura format merges them to one combined report.
+Merges files in cobertura format into one combined report.
 
 ## Usage
 ```
