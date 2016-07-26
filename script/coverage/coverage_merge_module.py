@@ -93,7 +93,17 @@ class CoverageMerge (object):
             currfile = 1
             logging.debug (
                 '{2}/{3} merging: {0} & {1}'.format (self.xmlfiles[0], self.xmlfiles[1], currfile, totalfiles - 1))
-            self.merge_xml (self.xmlfiles[0], self.xmlfiles[1], self.finalxml)
+
+            mergefailed = True
+            for i in range (totalfiles-1):
+                if self.merge_xml (self.xmlfiles[i], self.xmlfiles[i+1], self.finalxml):
+                    mergefailed = False
+                    break
+
+            if mergefailed:
+                print 'Not enough (<2) valid cobertura files found!'
+                sys.exit (1)
+
 
             currfile = 2
             for i in range (totalfiles - 2):
@@ -114,6 +124,9 @@ class CoverageMerge (object):
         # find root
         packages1root = xml1.find (PACKAGES_ROOT)
 
+        if packages1root == None:
+            logging.warning ('No '+PACKAGES_ROOT+' tag found in '+xmlfile1+'. Ignoring this file')
+            return False
 
         # merge packages
         self.merge (packages1root, packages1, packages2, 'name', self.merge_packages)
@@ -121,6 +134,7 @@ class CoverageMerge (object):
         # write result to output file
         xml1.write (outputfile, encoding="UTF-8", xml_declaration=True)
 
+        return True
 
     def filter_xml (self, xmlfile):
         xmlroot = xmlfile.getroot ()
