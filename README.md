@@ -28,6 +28,7 @@ Options:
                         Format of the rule is simple dot (.) separated names
                         with wildcard (*) allowed, e.g:
                         package.subpackage.*
+  -r, --recursive       If set all subdirectories will be searched for files.
 
 If no files are specified all xml files in current directory will be selected.
 Useful when there is not known precise file name only location

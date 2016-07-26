@@ -39,6 +39,7 @@ Options:
                         Format of the rule is simple dot (.) separated names
                         with wildcard (*) allowed, e.g:
                         package.subpackage.*
+  -r, --recursive       If set all subdirectories will be searched for files.
 
 If no files are specified all xml files in current directory will be selected.
 Useful when there is not known precise file name only location
@@ -82,6 +83,8 @@ def create_parser ():
                             "'python merge.py -k src.la.* -k unit_tests.la.'" + newline +
                             "Format of the rule is simple dot (.) separated names with wildcard (*) allowed, e.g: " + newline +
                             "package.subpackage.*")
+    parser.add_option ("-r", "--recursive", dest="recursive", default=False, action='store_true',
+                       help="If set all subdirectories will be searched for files.")
     return parser
 
 
