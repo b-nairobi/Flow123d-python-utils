@@ -42,13 +42,20 @@ class CoverageMerge (object):
         self.filteronly = options.filteronly
         self.filtersuffix = options.suffix
         self.packagefilters = options.packagefilters
+        self.recursive = options.recursive
 
     def execute_merge (self):
         # get arguments
         logging.basicConfig (level=self.loglevel, format='%(levelname)s %(asctime)s: %(message)s', datefmt='%x %X')
 
         if not self.xmlfiles:
-            for filename in os.listdir (self.path):
+            filelist = []
+            for (dirpath, dirnames, filenames) in os.walk(self.path):
+                for filename in filenames:
+                    filelist.append(filename)
+                if not self.recursive:
+                    break
+            for filename in filelist:
                 if not filename.endswith ('.xml'):
                     continue
                 fullname = os.path.join (self.path, filename)
