@@ -101,7 +101,7 @@ class CoverageMerge (object):
                     break
 
             if mergefailed:
-                print 'No valid cobertura files found!'
+                print 'Not enough (<2) valid cobertura files found!'
                 sys.exit (1)
 
 
@@ -124,7 +124,7 @@ class CoverageMerge (object):
         # find root
         packages1root = xml1.find (PACKAGES_ROOT)
 
-        if len(packages1root) == 0:
+        if packages1root == None:
             logging.warning ('No '+PACKAGES_ROOT+' tag found in '+xmlfile1+'. Ignoring this file')
             return False
 
