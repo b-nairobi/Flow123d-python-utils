@@ -50,18 +50,17 @@ class CoverageMerge (object):
 
         if not self.xmlfiles:
             filelist = []
-            for (dirpath, dirnames, filenames) in os.walk(self.path):
+           for (dirpath, dirnames, filenames) in os.walk(self.path):
                 for filename in filenames:
-                    filelist.append(filename)
+                    filelist.append (os.path.join (dirpath,filename))
                 if not self.recursive:
                     break
             for filename in filelist:
                 if not filename.endswith ('.xml'):
                     continue
-                fullname = os.path.join (self.path, filename)
-                if fullname == self.finalxml:
+                if filename == self.finalxml:
                     continue
-                self.xmlfiles.append (fullname)
+                self.xmlfiles.append (filename)
 
             if not self.xmlfiles:
                 print 'No xml files found!'
